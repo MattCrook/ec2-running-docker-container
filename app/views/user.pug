@@ -1,0 +1,22 @@
+extends layout
+
+block layout-content
+  div.View.UserView
+    h1.Banner #{userProfile.fullName}
+    div.Socials
+      a(href="https://github.com/MattCrook")
+        div.SocialButton Github
+      a(href="https://www.linkedin.com/in/mattcrook11/")
+        div.SocialButton LinkedIn
+      a(href="https://matt-crook.vercel.app/")
+        div.SocialButton Website
+      a(href="https://twitter.com/mgcrook")
+        div.SocialButton Twitter
+    div.Profile
+      div.Title
+        //- h3 Making Us the Best
+        h1 Profile
+      pre.Details=JSON.stringify(userProfile, null, 2)
+    div.NavButtons
+      a(href="/")
+        div.NavButton Back

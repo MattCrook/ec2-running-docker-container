@@ -1,0 +1,11 @@
+.DS_Store
+.vscode/
+.terraform
+*.tfstate
+*.tfstate.*
+*.pem
+node_modules/
+notes.txt*
+
+logs
+*.log
