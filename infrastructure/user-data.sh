@@ -1,9 +1,6 @@
-#!/bin/bash
-
-cat > index.html <<EOF
-<h1>Fairwinds SRE Technical Challenge</h1>
-<p>AMI address: ${public_ip}</p>
-<p>Server port: ${server_port}</p>
-EOF
-
-nohup busybox httpd -f -p ${server_port} &
+#! /bin/sh
+yum update -y
+amazon-linux-extras install docker
+service docker start
+usermod -a -G docker ec2-user
+chkconfig docker on
