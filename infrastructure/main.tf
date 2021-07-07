@@ -3,7 +3,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "eu-west-3"
 }
 
 locals {
@@ -33,16 +33,19 @@ resource "aws_key_pair" "webserver_key" {
 }
 
 
-
-
 resource "aws_instance" "webserver" {
-    # base ubuntu image
-    # ami                    = "ami-0d66ad041b3973276"
-    ami                    = "ami-0ab4d1e9cf9a1215a"
-    instance_type          = "t2.micro"
-    vpc_security_group_ids = [aws_security_group.allow_all_inbound.id, aws_security_group.allow_all_outbound.id, aws_security_group.allow_ssh.id]
-    key_name               = aws_key_pair.webserver_key.key_name
-    user_data              = data.template_file.user_data.rendered
+    ami                         = "ami-0b2f05cf909299b7c"
+    instance_type               = "t2.micro"
+    vpc_security_group_ids      = [aws_security_group.allow_all_inbound.id, aws_security_group.allow_all_outbound.id, aws_security_group.allow_ssh.id]
+    key_name                    = aws_key_pair.webserver_key.key_name
+    associate_public_ip_address = true
+    # availability_zone           = "eu-west-3a"
+    # subnet_id                   = aws_subnet.publicsubnets.id
+    subnet_id                   = aws_subnet.subnet.id
+    user_data                   = data.template_file.user_data.rendered
+    # monitoring                  = true
+
+
     # With amazon linux image
     // user_data = <<-EOF
     //     #!/bin/bash
@@ -76,7 +79,9 @@ resource "aws_instance" "webserver" {
 }
 
 resource "aws_security_group" "allow_all_inbound" {
-    name = "web-app-instance-security-group-inbound"
+    name        = "web-app-instance-security-group-inbound"
+    vpc_id      = aws_vpc.default.id
+    # vpc_id      = aws_vpc.fairwinds_code_challenge_vpc.id
 
     ingress {
         description = local.http_protocol
@@ -92,7 +97,9 @@ resource "aws_security_group" "allow_all_inbound" {
 }
 
 resource "aws_security_group" "allow_all_outbound" {
-    name = "web-app-instance-security-group-outbound"
+    name        = "web-app-instance-security-group-outbound"
+    vpc_id      = aws_vpc.default.id
+    # vpc_id      = aws_vpc.fairwinds_code_challenge_vpc.id
 
 
     egress {
@@ -108,7 +115,9 @@ resource "aws_security_group" "allow_all_outbound" {
 }
 
 resource "aws_security_group" "allow_ssh" {
-    name = "web-app-instance-security-group-ssh"
+    name        = "web-app-instance-security-group-ssh"
+    vpc_id      = aws_vpc.default.id
+    # vpc_id      = aws_vpc.fairwinds_code_challenge_vpc.id
 
     ingress {
         description = "ssh"
@@ -122,37 +131,3 @@ resource "aws_security_group" "allow_ssh" {
         Name = "allow_ssh"
     }
 }
-
-
-
-// resource "aws_security_group" "allow_http_ssh" {
-//     name        = "allow_http"
-//     description = "Allow http inbound traffic"
-
-//     ingress {
-//         description = "http"
-//         from_port   = 80
-//         to_port     = 80
-//         protocol    = "tcp"
-//         cidr_blocks = ["0.0.0.0/0"]
-//     }
-
-//     ingress {
-//         description = "ssh"
-//         from_port   = 22
-//         to_port     = 22
-//         protocol    = "tcp"
-//         cidr_blocks = ["0.0.0.0/0"]
-//     }
-
-//     egress {
-//         from_port   = 0
-//         to_port     = 0
-//         protocol    = "-1"
-//         cidr_blocks = ["0.0.0.0/0"]
-//     }
-
-//     tags = {
-//         Name = "allow_http_ssh"
-//     }
-// }
