@@ -63,14 +63,10 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-
   height: 100%;
   width: 100%;
-
   padding: 20px;
-
   background-size: cover;
-
   font-family: "Merriweather Sans", sans-serif;
 }
 
@@ -79,17 +75,12 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   width: 100%;
-
   border-radius: 5px;
-
   overflow: hidden;
   background: white;
   padding: 15px;
-
   font-family: "Share Tech Mono", monospace;
-
   border-bottom: var(--ui-shadow-border);
   box-shadow: var(--ui-shadow);
 }
@@ -123,20 +114,14 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 55px;
   width: 150px;
-
   background: #fa4141;
-
   border-radius: 30px;
-
   font-size: 16px;
   font-weight: bold;
   color: white;
-
   text-transform: capitalize;
-
   border-bottom: var(--ui-shadow-border);
   box-shadow: var(--ui-shadow);
 }
@@ -160,4 +145,29 @@ a {
   width: 100%;
   padding-left: 10%;
   padding-right: 10%;
+  margin-top: 2%;
+  margin-bottom: 12%;
+}
+
+.SocialButton:hover {
+  color: rgb(160, 160, 160);
+}
+
+.Description {
+  font-size: 14px;
+}
+
+.ProfileView {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+.ProfileNavButtons {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15% 20px;
 }

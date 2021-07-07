@@ -1,7 +1,7 @@
 extends layout
 
 block layout-content
-  div.View.UserView
+  div.ProfileView
     h1.Banner #{userProfile.fullName}
     div.Socials
       a(href="https://github.com/MattCrook")
@@ -17,6 +17,6 @@ block layout-content
         //- h3 Making Us the Best
         h1 Profile
       pre.Details=JSON.stringify(userProfile, null, 2)
-    div.NavButtons
+    div.ProfileNavButtons
       a(href="/")
         div.NavButton Back
