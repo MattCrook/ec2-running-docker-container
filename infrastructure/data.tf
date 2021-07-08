@@ -2,8 +2,8 @@ data "template_file" "user_data" {
   template = file("user-data.sh")
 
   vars = {
-    public_ip = "FooBar"
-    server_port  = var.server_port
+    http_port = var.server_port
+    release_version  = var.release_version
   }
 }
 
