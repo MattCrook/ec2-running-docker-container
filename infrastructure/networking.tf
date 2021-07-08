@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "IGW" {
     }
 }
 
-# Creating a public subnet. For demo purposes and in light of saving resouce consuption and time,
+# Creating a public subnet. For demo purposes and in light of saving resource consumption and time,
 # I am only creating a public subnet, however in a normal situation would create a private subnet as well.
 # That private subnet having its own routing table, and the route table for the public subnet would have access to the Internet Gateway as well as the private subnet.
 # In Addition, with a private subnet there would need to be a NAT Gateway, to allow outbound traffic from within the private subnet, as well as an EIP (Elastic IP),

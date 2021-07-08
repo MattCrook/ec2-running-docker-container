@@ -6,6 +6,17 @@ This project creates an EC2 instance running a basic web application in Docker u
 
 ## Set Up
 
+### Credentials
+
+You will need an AWS account and AWS credentials in your environment to run this program. Once you have them, put them in your environment like:
+
+```sh
+export AWS_ACCESS_KEY_ID="<aws_access_key_id>"
+export AWS_SECRET_ACCESS_KEY="<aws_secret_access_key>"
+```
+
+### Startup
+
 To run the program which will set up all the necessary infrastructure and run the application, be in the root directory and first run:
 
 * `make prep`
@@ -24,3 +35,9 @@ To clean up and tear everything down, be in the root directory and run:
 * `make stop`
 
 This will call the `./scripts/teardown.sh` script as a simple way to automate running the appropriate Terraform commands (`terraform destroy`) to tear down and clean up your infrastructure.
+
+## Notes
+
+* The EC2 instance may take up to a minute or two to boot up, so while Terraform has finished provisioning your EC2, and you may see the URL to go to in the output of the the startup program, the EC2 is still may not be ready to receive requests.
+  * You will see "Waiting for (`the ARN of your instance`)...
+    * This is put in place to continually curl your instance every 3 seconds until it responds with a 200, meaning it has fully booted and is responding to requests. No need to do anything, just wait for the instance to boot, and once it does the script will continue and open a browser tab for you.

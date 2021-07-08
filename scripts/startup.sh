@@ -51,7 +51,7 @@ wait-for-boot-up() {
     echo "Testing $1"
     while [[ "$(curl -s -o /dev/null -L -w ''%{http_code}'' ${1})" != "200" ]]; do
       echo -e "${YELLOW}Waiting for ${WEBSERVER_ARN}${NC}"
-      sleep 3
+      sleep 4
     done
     echo -e "${GREEN}OK!${NC}"
     curl -I $1
@@ -67,7 +67,7 @@ echo -e "${CYAN}cd infrastructure && ssh -i ${KEY} ec2-user@${PUBLIC_DNS}${NC}"
 sleep 2
 
 wait-for-boot-up http://${PUBLIC_IP}:${PORT}
-sleep 5
+sleep 4
 
 echo -e "Opening Fairwinds Code Challenge demo app on http://${PUBLIC_IP}:${PORT}"
 sleep 2
