@@ -3,10 +3,9 @@
 cd infrastructure
 terraform init
 echo "Running Terraform Plan"
-#terraform plan
+terraform plan
 
 retVal=$?
-# retVal=0
 
 if [ $retVal -eq 1 ]; then
     echo "Terraform plan failed"
