@@ -15,7 +15,7 @@ app.get("/user", (req, res) => {
 });
 
 // The views setting tells Express what directory it should use as the source of view template files.
-// In this case, you set the views directory as the source using the path.join() method, which creates a cross - platform file path.
+// In this case, setting the views directory as the source using the path.join() method, which creates a cross - platform file path.
 app.set("views", path.join(__dirname, "views"));
 
 // The view engine setting tells Express what template engine to use, which in this case, is pug.

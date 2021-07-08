@@ -29,7 +29,7 @@ resource "aws_subnet" "subnet" {
     cidr_block              = "10.0.0.0/24"
     map_public_ip_on_launch = true
 
-    depends_on = [aws_internet_gateway.IGW]
+    depends_on              = [aws_internet_gateway.IGW]
 
     tags = {
         Name = "fairwinds-code-challenge-default-subnet"

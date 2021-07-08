@@ -10,13 +10,6 @@ variable "release_version" {
     default     = "1.1"
 }
 
-# Defining the CIDR block use 10.0.0.0/24 for this code challenge demo
-variable "main_vpc_cidr" {
-    description = "The CIDR block for the VPC"
-    type        = string
-    default     = "10.0.0.0/24"
-}
-
 variable "public_subnets" {
     description = "The CIDR block for the subnet."
     type        = string
