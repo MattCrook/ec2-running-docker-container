@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#set -e
+
 cd infrastructure
 terraform init
 echo "Running Terraform Plan"
@@ -47,6 +49,8 @@ NC='\033[0m' # No Color
 # Reads "until curl successfully completes the requested transfer, wait 3 seconds and retry".
 # -s prevents it from printing messages and the progress meter,
 # -o /dev/null assumes you are not interested in the content of the response.
+# -L follow redirects
+# -w Use output FORMAT after completion
 wait-for-boot-up() {
     echo "Testing $1"
     while [[ "$(curl -s -o /dev/null -L -w ''%{http_code}'' ${1})" != "200" ]]; do
