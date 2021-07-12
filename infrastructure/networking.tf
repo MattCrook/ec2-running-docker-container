@@ -5,7 +5,7 @@ resource "aws_vpc" "default" {
     enable_dns_hostnames = true
 
     tags = {
-        Name = "fairwinds-code-challenge-default-vpc"
+        Name = "default-vpc"
     }
 }
 
@@ -15,7 +15,7 @@ resource "aws_internet_gateway" "IGW" {
     vpc_id = aws_vpc.default.id
 
     tags = {
-        Name = "fairwinds-code-challenge-default-IGW"
+        Name = "default-IGW"
     }
 }
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "subnet" {
     depends_on              = [aws_internet_gateway.IGW]
 
     tags = {
-        Name = "fairwinds-code-challenge-default-subnet"
+        Name = "default-subnet"
     }
 }
 
