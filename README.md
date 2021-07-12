@@ -63,3 +63,17 @@ This will call the `./scripts/teardown.sh` script as a simple way to automate ru
   * ***Note*** - for demo purposes a private subnet is not created. If created, would also need to create a **NAT Gateway** which would allow instances with no public IPs to access the internet. With the NAT Gateway, you would also need an **ElasticIP**, which is a static IPv4 address designed for dynamic cloud computing; and associate it with your instance to enable communication with the internet.
 * `aws_route_table` - Set of rules, called routes, that are used to determine where network traffic from your subnet or gateway is directed. To put it simply, a route table tells network packets which way they need to go to get to their destination.
 * `aws_route_table_association` - Route table Association with Public Subnet.
+
+
+## Extra
+
+You can also either run the app locally, or build the docker image locally to view the app.
+
+Be in the `/app` directory and run:
+
+`npm install && npm run dev`
+
+or
+
+`docker build -t webserver-app:latest .`
+`docker run -it -d -p 8080:8080 webserver-app:latest`
