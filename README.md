@@ -60,5 +60,6 @@ This will call the `./scripts/teardown.sh` script as a simple way to automate ru
 * `aws_vpc` - Creating a VPC for the EC2 to live in.
 * `aws_internet_gateway` - Allows instances with public IPs to access the internet.
 * `aws_subnet` - *Public subnet* that's associated with a route table that has a route to an internet gateway.
+  * Note - for demo purposes a private subnet is not created. If created, would also need to create a **NAT Gateway** which would allow instances with no public IPs to access the internet. With the NAT Gateway, you would also need an **ElasticIP**, which is a static IPv4 address designed for dynamic cloud computing; and associate it with your instance to enable communication with the internet.
 * `aws_route_table` - Set of rules, called routes, that are used to determine where network traffic from your subnet or gateway is directed. To put it simply, a route table tells network packets which way they need to go to get to their destination.
 * `aws_route_table_association` - Route table Association with Public Subnet.
