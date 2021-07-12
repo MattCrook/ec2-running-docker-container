@@ -7,7 +7,7 @@ variable "server_port" {
 variable "release_version" {
     description = "The version of webserver-app from dockerhub"
     type        = string
-    default     = "1.1"
+    default     = "1.2"
 }
 
 variable "public_subnets" {
