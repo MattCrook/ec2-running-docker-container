@@ -61,7 +61,7 @@ wait-for-boot-up() {
     curl -I $1
 }
 
-echo -e "${CYAN}The Fairwinds Code Challenge demo app will be available on http://${PUBLIC_IP}:${PORT}${NC}"
+echo -e "${CYAN}The demo Express app will be available on http://${PUBLIC_IP}:${PORT}${NC}"
 sleep 2
 echo "The instance may take a couple seconds to boot up the application..."
 sleep 5
@@ -73,7 +73,7 @@ sleep 2
 wait-for-boot-up http://${PUBLIC_IP}:${PORT}
 sleep 4
 
-echo -e "Opening Fairwinds Code Challenge demo app on http://${PUBLIC_IP}:${PORT}"
+echo -e "Opening Webserver-app on http://${PUBLIC_IP}:${PORT}"
 sleep 2
 
 open http://$PUBLIC_IP:$PORT
