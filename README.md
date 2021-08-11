@@ -78,3 +78,8 @@ or
 `docker build -t webserver-app:latest .`
 
 `docker run -it -d -p 8080:8080 webserver-app:latest`
+
+### Extra Notes
+
+Miscellaneous notes from development.
+* [here]()
