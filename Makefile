@@ -9,3 +9,6 @@ start:
 
 stop:
 	@./scripts/teardown.sh
+
+awsLogin:
+	@chmod +x ./scripts/awsLogin.sh && ./scripts/awsLogin.sh

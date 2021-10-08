@@ -15,6 +15,28 @@ export AWS_ACCESS_KEY_ID="<aws_access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<aws_secret_access_key>"
 ```
 
+##### AWS CLI Wrapper
+
+You can use the simple aws cli wrapper in this project to either set up your account, or check your account with AWS. It provides many options such as checking what profile or account you are logged in as, checking keys, checking availability zones, etc...
+
+To run the cli program, just run the following command, and follow the prompts/ instructions.
+```sh
+make awsLogin
+```
+
+***Note***: Make sure you have `awscli` installed for the script to work.
+
+On Mac:
+```
+
+brew install awscli
+
+Reference: https://aws.amazon.com/cli/
+```
+
+
+
+
 ### Startup
 
 To run the program which will set up all the necessary infrastructure and run the application, be in the root directory and first run:
