@@ -6,6 +6,9 @@ LIGHTRED='\033[1;31m'
 RED='\033[0;31m'
 LIGHTYELLOW='\033[0;33m'
 PURPLE='\033[0;35m'
+DARKGRAY='\033[1;30m'
+WHITE='\033[1;37m'
+GREEN='\033[0;32m'
 NC='\033[0m'
 CURRENT_PROFILE=$(aws sts get-caller-identity)
 
@@ -24,7 +27,7 @@ function main() {
     echo "  4. Get Availability Zones"
     echo "  5. Get sts caller identity"
     echo " "
-    echo -e "  ${LIGHTYELLOW}Extra${NC}: "
+    echo -e "  ${YELLOW}Extra${NC}: "
     echo "  6.  Get IAM Authorization Details"
     echo "  7.  Get IAM Account Summary"
     echo "  8.  Get IAM Get Login Profile"
@@ -33,7 +36,8 @@ function main() {
     echo "  11. Get IAM Get SSH Public Key"
     echo "  12. Get IAM Get User Policy"
     echo "  13. Get IAM Get Access Key Info (Get AWS Account)"
-    echo -e "  ${LIGHTRED}14. Exit${NC}"
+    echo -e "  ${LIGHTYELLOW}14. Set AWS Account (AWS Access key and Secret key)${NC}"
+    echo -e "  ${LIGHTRED}15. Exit${NC}"
 
     echo ""
     echo "Enter number of option: "
@@ -42,38 +46,71 @@ function main() {
 
     if [ "$option" == "1" ]; then
         aws configure list
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ "$option" == "2" ]; then
         aws configure list-profiles
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "3" ]; then
         aws configure
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "4" ]; then
         describe-availability-zones
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "5" ]; then
         get-caller-identity
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "6" ]; then
         aws iam get-account-authorization-details
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "7" ]; then
         aws iam get-account-summary
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "8" ]; then
         echo "Enter username: "
         read username
         aws iam get-login-profile --user-name $username
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "9" ]; then
         aws iam get-credential-report
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "10" ]; then
         aws iam get-user
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "11" ]; then
         aws iam get-ssh-public-key
+        echo ""
+        echo "--------------------------------------------------"
+        main
 
     elif [ $option == "12" ]; then
         echo "Enter Username: "
@@ -86,6 +123,17 @@ function main() {
         aws sts get-access-key-info --access-key-id $AWS_ACCESS_KEY_ID
 
     elif [ $option == "14" ]; then
+        echo -e "${WHITE}Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY variables in your env${NC}"
+        echo ""
+        echo "Enter AWS_ACCESS_KEY_ID: "
+        read AWS_ACCESS_KEY_ID
+        echo "Enter AWS_SECRET_ACCESS_KEY: "
+        read AWS_SECRET_ACCESS_KEY
+        echo -e "${DARKGREY}export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}${NC}"
+        echo -e "${DARKGREY}export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}${NC}"
+        echo -e "${GREEN}Success${NC}"
+
+    elif [ $option == "15" ]; then
         exit 0
     fi
 }
@@ -107,6 +155,9 @@ function get-caller-identity() {
   else
     aws sts get-caller-identity
     CURRENT_PROFILE=$(aws sts get-caller-identity)
+    echo ""
+    echo "--------------------------------------------------"
+    main
   fi
 }
 
